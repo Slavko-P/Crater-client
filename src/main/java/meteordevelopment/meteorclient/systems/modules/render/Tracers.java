@@ -5,12 +5,12 @@
 
 package meteordevelopment.meteorclient.systems.modules.render;
 
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
 import meteordevelopment.meteorclient.events.render.Render3DEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Categories;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.systems.modules.Modules;
+import meteordevelopment.meteorclient.systems.friends.Friends;
 import meteordevelopment.meteorclient.utils.Utils;
 import meteordevelopment.meteorclient.utils.entity.EntityUtils;
 import meteordevelopment.meteorclient.utils.entity.Target;
@@ -19,9 +19,12 @@ import meteordevelopment.meteorclient.utils.render.RenderUtils;
 import meteordevelopment.meteorclient.utils.render.color.Color;
 import meteordevelopment.meteorclient.utils.render.color.SettingColor;
 import meteordevelopment.orbit.EventHandler;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
+
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
 
 public class Tracers extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
@@ -140,7 +143,10 @@ public class Tracers extends Module {
 
             Color color;
 
-            if (distance.get()) {
+			if (Friends.get().isFriend((PlayerEntity) entity)) {
+				color = Friends.get().color;
+			}
+            else if (distance.get()) {
                 color = getColorFromDistance(entity);
             }
             else if (entity instanceof PlayerEntity) {
@@ -172,6 +178,7 @@ public class Tracers extends Module {
     }
 
     private Color getColorFromDistance(Entity entity) {
+		
         // Credit to Icy from Stackoverflow
         double distance = mc.gameRenderer.getCamera().getPos().distanceTo(entity.getPos());
         double percent = distance / 60;
