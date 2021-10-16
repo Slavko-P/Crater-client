@@ -386,6 +386,7 @@ public class Modules extends System<Modules> {
         add(new SelfWeb());
 //        add(new SmartSurround());
         add(new Surround());
+        add(new SuperKnockback());
     }
 
     private void initPlayer() {
