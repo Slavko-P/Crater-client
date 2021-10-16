@@ -5,7 +5,7 @@
 
 <h1 align="center">Meteor Client Fork</h1>
 
-<p align="center">A Minecraft Fabric Utility Mod for the latest Minecraft release.</p>
+<p align="center">Fork of a Minecraft Fabric Utility Mod for the latest Minecraft release.</p>
 
 <div align="center">
     <img src="https://shields.io/github/last-commit/Slavko-P/meteor-client-fork" alt="GitHub last commit"/>
