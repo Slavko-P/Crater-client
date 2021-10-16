@@ -286,4 +286,11 @@ public class PlayerUtils {
         if (playerListEntry == null) return 0;
         return playerListEntry.getLatency();
     }
+	
+	public static boolean isNameValid(Entity entity) {
+		String name = entity.getName().asString();
+		if (name.isEmpty() || name.contains(" "))
+			return false;
+		return true;
+	}
 }
