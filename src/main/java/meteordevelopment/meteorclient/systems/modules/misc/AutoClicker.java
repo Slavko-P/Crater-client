@@ -13,12 +13,15 @@ import meteordevelopment.meteorclient.settings.SettingGroup;
 import meteordevelopment.meteorclient.systems.modules.Categories;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.utils.Utils;
+import meteordevelopment.meteorclient.mixininterface.IMinecraftClient;
+import meteordevelopment.meteorclient.mixin.MinecraftClientAccessor;
 import meteordevelopment.orbit.EventHandler;
 
 public class AutoClicker extends Module {
     public enum Mode {
         Hold,
-        Press
+        Press,
+        Manual
     }
 
     public enum Button {
@@ -52,6 +55,8 @@ public class AutoClicker extends Module {
     );
 
     private int timer;
+    private MinecraftClientAccessor mca = (MinecraftClientAccessor) mc;
+    private IMinecraftClient imc = (IMinecraftClient) mc;
 
     public AutoClicker() {
         super(Categories.Player, "auto-clicker", "Automatically clicks.");
@@ -85,7 +90,7 @@ public class AutoClicker extends Module {
                 break;
             case Press:
                 timer++;
-                if (!(delay.get() > timer)) {
+                if (delay.get() < timer) {
                     switch (button.get()) {
                         case Left:
                             Utils.leftClick();
@@ -97,6 +102,21 @@ public class AutoClicker extends Module {
                     timer = 0;
                 }
                 break;
+			case Manual:
+				timer++;
+				if (delay.get() < timer) {
+					switch (button.get()) {
+						case Left:
+						if (mc.options.keyAttack.isPressed())
+							mca.leftClick();
+							break;
+						case Right:
+						if (mc.options.keyUse.isPressed())
+							imc.rightClick();
+							break;
+					}
+					timer = 0;
+				}
         }
     }
 }
