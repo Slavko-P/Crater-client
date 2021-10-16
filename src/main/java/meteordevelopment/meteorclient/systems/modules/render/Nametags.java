@@ -252,6 +252,7 @@ public class Nametags extends Module {
 
             if (type == EntityType.PLAYER) {
                 if ((!yourself.get() || freecamNotActive) && entity == mc.player) continue;
+                if (!PlayerUtils.isNameValid(entity)) continue;
             }
 
             if (!culling.get() || entity.getPos().distanceTo(cameraPos) < maxCullRange.get()) {
