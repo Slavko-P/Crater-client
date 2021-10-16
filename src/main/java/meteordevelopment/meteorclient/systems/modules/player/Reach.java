@@ -19,7 +19,7 @@ public class Reach extends Module {
             .description("Your reach modifier.")
             .defaultValue(5)
             .min(0)
-            .sliderMax(6)
+            .sliderMax(10)
             .build()
     );
 
