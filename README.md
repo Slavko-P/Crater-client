@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="https://meteorclient.com/icon.png" alt="meteor-client-logo" width="20%"/>
+<img src="https://raw.githubusercontent.com/Slavko-P/meteor-client-fork/master/meteor-forked.png" alt="meteor-client-logo" width="20%"/>
 </p>
 
 <h1 align="center">Meteor Client Fork</h1>
