@@ -15,6 +15,7 @@ import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.utils.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.BlockItem;
 
 public class Hitboxes extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
@@ -39,7 +40,7 @@ public class Hitboxes extends Module {
 
     public double getEntityValue(Entity entity) {
         if (!isActive()) return 0;
-        if (entities.get().getBoolean(entity.getType())) return value.get();
+        if (entities.get().getBoolean(entity.getType()) && !(mc.player.getMainHandStack().getItem() instanceof BlockItem)) return value.get();
         return 0;
     }
 }
