@@ -237,12 +237,10 @@ public class Utils {
 
     public static int search(String text, String filter) {
         int wordsFound = 0;
-        text = text.toLowerCase(Locale.ROOT);
-        String[] words = filter.toLowerCase(Locale.ROOT).split(" ");
+        String[] words = filter.split(" ");
 
         for (String word : words) {
-            if (!text.contains(word)) return 0;
-            wordsFound += StringUtils.countMatches(text, word);
+            if (StringUtils.containsIgnoreCase(text, word)) wordsFound++;
         }
 
         return wordsFound;
