@@ -541,6 +541,7 @@ public class Modules extends System<Modules> {
         add(new TPSSync());
         add(new VanillaSpoof());
         add(new InventoryTweaks());
+		add(new SkinDerp());
     }
 
     public static class ModuleRegistry extends Registry<Module> {
