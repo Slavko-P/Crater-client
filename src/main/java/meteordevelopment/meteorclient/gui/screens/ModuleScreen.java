@@ -78,6 +78,13 @@ public class ModuleScreen extends WindowScreen {
         active.action = () -> {
             if (module.isActive() != active.checked) module.toggle();
         };
+		
+		//   Visible
+        bottom.add(theme.label("Visible: "));
+        WCheckbox visible = bottom.add(theme.checkbox(module.isVisible())).widget();
+        visible.action = () -> {
+            if (module.isVisible() != visible.checked) module.setVisible(visible.checked);
+        };
     }
 
     @Override

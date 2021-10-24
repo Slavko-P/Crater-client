@@ -20,13 +20,6 @@ import java.util.List;
 public class ActiveModulesHud extends HudElement {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
-    private final Setting<List<Module>> hiddenModules = sgGeneral.add(new ModuleListSetting.Builder()
-        .name("hidden-modules")
-        .description("Which modules not to show in the list.")
-        .defaultValue(new ArrayList<>())
-        .build()
-    );
-
     private final Setting<Sort> sort = sgGeneral.add(new EnumSetting.Builder<Sort>()
         .name("sort")
         .description("How to sort active modules.")
@@ -118,7 +111,7 @@ public class ActiveModulesHud extends HudElement {
         modules.clear();
 
         for (Module module : Modules.get().getActive()) {
-            if (!hiddenModules.get().contains(module)) modules.add(module);
+            if (module.isVisible()) modules.add(module);
         }
 
         modules.sort((o1, o2) -> {
