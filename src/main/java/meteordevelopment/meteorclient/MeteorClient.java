@@ -18,7 +18,6 @@ import meteordevelopment.meteorclient.systems.Systems;
 import meteordevelopment.meteorclient.systems.config.Config;
 import meteordevelopment.meteorclient.systems.modules.Categories;
 import meteordevelopment.meteorclient.systems.modules.Modules;
-import meteordevelopment.meteorclient.systems.modules.misc.DiscordPresence;
 import meteordevelopment.meteorclient.utils.Utils;
 import meteordevelopment.meteorclient.utils.misc.FakeClientPlayer;
 import meteordevelopment.meteorclient.utils.misc.MeteorStarscript;
@@ -116,14 +115,6 @@ public class MeteorClient implements ClientModInitializer {
 
             ADDONS.add(addon);
         }
-
-        // Initialize
-        Systems.addPreLoadTask(() -> {
-            if (!Modules.get().getFile().exists()) {
-                Modules.get().get(DiscordPresence.class).toggle();
-                Utils.addMeteorPvpToServerList();
-            }
-        });
 
         GL.init();
         Shaders.init();

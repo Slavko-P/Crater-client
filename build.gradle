@@ -62,7 +62,6 @@ dependencies {
 	// Other dependencies
 	dependency "meteordevelopment:orbit:${project.orbit_version}"
     dependency "meteordevelopment:starscript:${project.starscript_version}"
-	dependency "club.minnced:java-discord-rpc:${project.discordrpc_version}"
 }
 
 shadowJar {
